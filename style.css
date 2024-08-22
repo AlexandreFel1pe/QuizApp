@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #F4F6FA;
+    --purple: #A729F5;
+    --white: #FFF;
+    --bg-mobile: url(./assets/images/pattern-background-mobile-light.svg);
+}
+
+body {
+    height: 100svg;
+    background: var(--bg-mobile) var(--bg-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tema {
+    display: flex;
+    padding: 8px 0;
+    align-items: center;
+    gap: 8px;
+}
+
+.tema img {
+    width: 16px;
+}
+
+.tema button {
+    height: 20px;
+    width: 32px;
+    background-color: var(--purple);
+    border: none;
+    border-radius: 999px;
+    padding: 4px;
+}
+
+.tema button div {
+    background: var(--white);
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+}
+
+main {
+    
+}
