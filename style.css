@@ -154,7 +154,7 @@ main {
     }
 
     header {
-        margin: 81px;
+        margin-block: 81px;
     }
 
     .tema {
