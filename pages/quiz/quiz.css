@@ -65,12 +65,26 @@ header {
 }
 
 .assunto-icone  {
-    background-color: var(--bg-acessibilidade);
     width: 40px;
     height: 40px;
     padding: 5px;
     border-radius: 5px;
+}
 
+.assunto-icone.html {
+    background-color: var(--bg-html);
+}
+
+.assunto-icone.css {
+    background-color: var(--bg-css);
+}
+
+.assunto-icone.javascript {
+    background-color: var(--bg-js);
+}
+
+.assunto-icone.acessibilidade {
+    background-color: var(--bg-acessibilidade);
 }
 
 .assunto-icone img {

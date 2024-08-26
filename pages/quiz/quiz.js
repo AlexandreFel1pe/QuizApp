@@ -8,3 +8,18 @@ botaoTema.addEventListener("click", () => {
 });
 
 verificarTema(botaoTema, body);
+
+const assunto = localStorage.getItem("assunto");
+
+function alterarAssunto() {
+    const divIcone = document.querySelector(".assunto-icone");
+    const iconeImg = document.querySelector(".assunto-icone img");
+    const assuntoTitulo = document.querySelector(".assunto h1");
+
+    divIcone.classList.add(assunto.toLowerCase());
+    iconeImg.setAttribute("src", `../../assets/images/icon-${assunto.toLowerCase()}.svg`);
+    iconeImg.setAttribute("alt", `Ícone de ${assunto}`);
+    assuntoTitulo.innerHTML = assunto;
+}
+
+alterarAssunto();
