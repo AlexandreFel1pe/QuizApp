@@ -8,3 +8,15 @@ botaoTema.addEventListener("click", () => {
 });
 
 verificarTema(botaoTema, body);
+
+const botoesAssunto = document.querySelectorAll(".assuntos button");
+botoesAssunto.forEach(botao => {
+    botao.addEventListener("click", selecionarAssunto)
+})
+
+function selecionarAssunto(evento) {
+    const assunto = evento.target.innerText;
+    console.log(assunto);
+    localStorage.setItem("assunto", assunto);
+    window.location.href = "./pages/quiz/quiz.html";
+}
