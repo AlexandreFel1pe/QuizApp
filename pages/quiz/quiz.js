@@ -116,6 +116,18 @@ function guardarResposta(evento) {
 }
 
 function validarResposta() {
+    const botaoEnviar = document.querySelector(".alternativas button");
+    botaoEnviar.innerHTML = "Próxima"
+    botaoEnviar.removeEventListener("click", validarResposta);
+
+    if (pergunta === 10) {
+        botaoEnviar.innerHTML = "Finalizar";
+        botaoEnviar.addEventListener("click", finalizar);
+    }
+    else {
+        botaoEnviar.addEventListener("click", proximaPergunta);
+    }
+
     if (resposta === quiz.questions[pergunta-1].answer) {
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "correta");
     }
@@ -128,13 +140,22 @@ function validarResposta() {
     inputs.forEach(input => {
         input.setAttribute("disabled", "true");
     })
+
+    pergunta = pergunta + 1;
 }
 
-async function iniciar() {
-    alterarAssunto();
-    await buscarPerguntas();
-    montarPerguntar();
+function finalizar() {
+    localStorage.setItem("pontos", pontos);
 
+    window.location.href = "../resultado/resultado.html"
+}
+
+function proximaPergunta() {
+    montarPerguntar();
+    adicionarEventoInputs();
+}
+
+function adicionarEventoInputs() {
     const inputsResposta = document.querySelectorAll(".alternativas input");
     inputsResposta.forEach(input => {
         input.addEventListener("click", guardarResposta);
@@ -143,6 +164,13 @@ async function iniciar() {
             respostaCorretaId = input.id;
         }
     })
+}
+
+async function iniciar() {
+    alterarAssunto();
+    await buscarPerguntas();
+    montarPerguntar();
+    adicionarEventoInputs();
 }
 
 iniciar();
