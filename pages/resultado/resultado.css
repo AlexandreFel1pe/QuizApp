@@ -73,6 +73,27 @@ header {
 
 }
 
+.assunto-icone.html {
+    background-color: var(--bg-html);
+}
+
+.assunto-icone.css {
+    background-color: var(--bg-css);
+}
+
+.assunto-icone.javascript {
+    background-color: var(--bg-js);
+}
+
+.assunto-icone.acessibilidade {
+    background-color: var(--bg-acessibilidade);
+}
+
+.assunto-icone img {
+    width: 100%;
+    color: var(--primary-text-color);
+}
+
 .assunto-icone img {
     width: 100%;
     color: var(--primary-text-color);
