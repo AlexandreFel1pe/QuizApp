@@ -9,6 +9,7 @@ let pontos = 0;
 let pergunta = 1;
 let resposta = "";
 let idInputResposta = "";
+let respostaCorretaId = "";
 
 botaoTema.addEventListener("click", () => {
     trocarTema(botaoTema, body);
@@ -96,7 +97,7 @@ function montarPerguntar() {
                 </label>
             </form>
 
-            <button>Enviar</button>
+            <button>Responder</button>
         </section>
     `
 }
@@ -108,6 +109,25 @@ function alterarSinais(texto) {
 function guardarResposta(evento) {
     resposta = evento.target.value;
     idInputResposta = evento.target.id;
+
+    const butaoEnviar = document.querySelector(".alternativas button");
+
+    butaoEnviar.addEventListener("click", validarResposta);
+}
+
+function validarResposta() {
+    if (resposta === quiz.questions[pergunta-1].answer) {
+        document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "correta");
+    }
+    else {
+        document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "errada");
+        document.querySelector(`label[for='${respostaCorretaId}']`).setAttribute("id", "correta");
+    }
+
+    const inputs = document.querySelectorAll(".alternativas input");
+    inputs.forEach(input => {
+        input.setAttribute("disabled", "true");
+    })
 }
 
 async function iniciar() {
@@ -118,6 +138,10 @@ async function iniciar() {
     const inputsResposta = document.querySelectorAll(".alternativas input");
     inputsResposta.forEach(input => {
         input.addEventListener("click", guardarResposta);
+
+        if (input.value === quiz.questions[pergunta-1].answer) {
+            respostaCorretaId = input.id;
+        }
     })
 }
 
